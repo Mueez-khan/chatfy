@@ -57,7 +57,7 @@ export default function SendMessage() {
   const fetchMessages = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/v1/message/get/${receiverId}`,
+        `${import.meta.env.URL}/message/get/${receiverId}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export default function SendMessage() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/v1/message/${receiverId}`,
+        `${import.meta.env.URL}/message/${receiverId}`,
         { content: userInput.content },
         {
           headers: {
