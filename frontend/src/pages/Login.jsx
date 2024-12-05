@@ -28,7 +28,7 @@ export default function Login() {
       e.preventDefault();
 
       const response = await axios.post(
-        "http://localhost:8000/api/v1/login",
+        `${import.meta.env.URL}/login`,
         userData
       );
 
