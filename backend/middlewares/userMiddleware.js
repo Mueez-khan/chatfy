@@ -23,7 +23,7 @@ exports.authenticateUser = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify the token using your JWT secret
+    const decoded = jwt.verify(token, process.env.JWTSECRET); // Verify the token using your JWT secret
     // console.log("Decode" , decoded);
     req.user = decoded; // Attach the decoded user to the request
     next();
