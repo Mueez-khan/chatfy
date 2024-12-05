@@ -20,7 +20,7 @@ const Messages = () => {
         // Fetch existing messages (you can implement your backend call here)
         const fetchMessages = async () => {
             try {
-                const response = await fetch(`http://localhost:8000/api/messages/${receiverId}`);
+                const response = await fetch(`${import.meta.env.URL}/${receiverId}`);
                 // const data = await response.json();
                  console.log(response);
                 if (response.data.success) {
