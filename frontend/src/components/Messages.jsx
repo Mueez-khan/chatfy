@@ -58,7 +58,7 @@ const Messages = () => {
 
         try {
             // Send the message to the backend to save and broadcast via Socket.IO
-            const response = await fetch(`http://localhost:8000/api/v1/message/${receiverId}`, {
+            const response = await fetch(`${import.meta.env.URL}/message/${receiverId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
