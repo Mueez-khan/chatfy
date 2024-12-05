@@ -25,7 +25,7 @@ export default function Register() {
 
     try {
       setLoading(true);
-      const response = await axios.post("http://localhost:8000/api/v1/register", userData);
+      const response = await axios.post(`${import.meta.env.URL}/register`, userData);
       if(response.data.success == true){
         setLoading(false);
       }
