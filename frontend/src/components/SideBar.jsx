@@ -28,7 +28,7 @@ export default function SideBar() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await axios.get("http://localhost:8000/api/v1/users" ,
+      const response = await axios.get(`${import.meta.env.URL}/users` ,
         {
           headers: {
             "Content-Type": "application/json",
