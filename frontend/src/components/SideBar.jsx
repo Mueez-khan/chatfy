@@ -10,7 +10,7 @@ export default function SideBar() {
 
   // const userDetails = useSelector((state) => state.auth.user);
   
- 
+ console.log(import.meta.env.VITE_URL);
 
   const dispatch = useDispatch();
 
@@ -37,6 +37,7 @@ export default function SideBar() {
         }
       );
 
+      console.log("Response" , response);
     
 
       setUserData({
