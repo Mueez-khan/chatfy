@@ -28,7 +28,7 @@ export default function Login() {
       e.preventDefault();
 
       const response = await axios.post(
-        `${import.meta.env.URL}/login`,
+        `${import.meta.env.VITE_URL}/login`,
         userData
       );
 
