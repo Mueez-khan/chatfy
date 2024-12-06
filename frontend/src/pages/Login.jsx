@@ -21,6 +21,10 @@ export default function Login() {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
+   const navigateToRegister = () =>{
+    navigate("/register")
+  }
+
   const handleSubmit = async (e) => {
     try {
       setLoading(true);
@@ -103,6 +107,9 @@ export default function Login() {
           >
             {loading ? "Processing ... " : "Login"}
           </button>
+          <div>
+        <button onClick={navigateToRegister} className="text-blue-950 mt-4 ">Register</button>
+        </div>
         </form>
       </div>
     </div>
