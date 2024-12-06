@@ -25,7 +25,7 @@ export default function Register() {
 
     try {
       setLoading(true);
-      const response = await axios.post(`${import.meta.env.URL}/register`, userData);
+      const response = await axios.post(`${import.meta.env.VITE_URL}/register`, userData);
       if(response.data.success == true){
         setLoading(false);
       }
