@@ -35,7 +35,6 @@ export default function SideBar() {
         }
       );
 
-      console.log("Response" , response);
     
 
       setUserData({
