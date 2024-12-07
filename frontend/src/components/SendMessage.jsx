@@ -20,7 +20,7 @@ export default function SendMessage() {
     if (!ownId || !ownId._id) return;
 
     // Initialize socket connection
-    const newSocket = io("http://localhost:8000", {
+    const newSocket = io(`${import.meta.env.VITE_URL}`, {
       query: { userId: ownId._id },
       transports: ["websocket"],
       reconnection: true,
