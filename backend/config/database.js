@@ -1,17 +1,17 @@
-require('dotenv').config();  // Load environment variables
-
 const mongoose = require("mongoose");
 
-const dbConnection = () => {
-  try {
-    mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("Database connected successfully");
-  } catch (err) {
-    console.log("There is an issue in connecting to the DB:", err);
-  }
-};
+require("dotenv").config();
+
+const dbConnection = () =>{
+
+    try{
+        mongoose.connect(process.env.DB_URL);
+        console.log("DB connected ");
+    }
+    catch(err){
+        console.log( "There is issue in Connecting to the db",  err );
+    }
+
+}
 
 module.exports = dbConnection;
