@@ -20,7 +20,7 @@ export default function SendMessage() {
     if (!ownId || !ownId._id) return;
 
     // Initialize socket connection
-    const newSocket = io(`${import.meta.env.VITE_URL}`, {
+    const newSocket = io(`https://chatfy-production.up.railway.app`, {
       query: { userId: ownId._id },
       transports: ["websocket"],
       reconnection: true,
