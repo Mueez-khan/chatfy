@@ -20,6 +20,10 @@ export default function Register() {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
+   const navigateToLogin = () =>{
+    navigate("/login")
+  }
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -57,7 +61,7 @@ export default function Register() {
 
     <div className="content-center " >
     <h1 className="flex items-center justify-center text-4xl text-purple-50 mb-10 text-  " >Register</h1>
-      <form onSubmit={submitHandler} className="items-center  w-80 ">
+      <form  className="items-center  w-80 ">
         <input
           className="w-full p-2 mb-4 text-black border border-gray-300 rounded"
           type="text"
@@ -101,9 +105,13 @@ export default function Register() {
         <button
           className="w-full bg-pink-600 text-white p-2 rounded hover:bg-green-600"
           type="submit"
+          onClick={submitHandler}
         >
           {loading ? "Loading ..." : "Register"}
         </button>
+         <div>
+        <button onClick={navigateToLogin} className="text-blue-950 mt-4 ">Login</button>
+        </div>
       </form>
     </div>
 
