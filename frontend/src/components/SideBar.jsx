@@ -8,9 +8,7 @@ import { logOut }from "../redux/slices/authSlice";
 
 export default function SideBar() {
 
-  // const userDetails = useSelector((state) => state.auth.user);
-  
- console.log(import.meta.env.VITE_URL);
+
 
   const dispatch = useDispatch();
 
