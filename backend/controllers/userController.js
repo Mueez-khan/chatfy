@@ -115,7 +115,7 @@ exports.register = async (req, res) => {
                 id : user._id,
              }
 
-            const token = jwt.sign(payload , process.env.JWT_SECRET , {
+            const token = jwt.sign(payload , process.env.JWTSECRET , {
                 expiresIn : "30d",
             })
       
