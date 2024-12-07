@@ -72,7 +72,7 @@ export default function Login() {
     <div>
       <div className="flex items-center justify-center h-screen bg-gradient-to-b from-richblack-900 via-richblack-800 to-richblack-700 text-white">
         <form
-          onSubmit={handleSubmit}
+          
           className="w-full max-w-lg  p-8 rounded shadow-md"
         >
           <h2 className="text-2xl font-bold mb-6 text-gray-700">Login</h2>
@@ -103,6 +103,7 @@ export default function Login() {
 
           <button
             type="submit"
+             onClick={handleSubmit}
             className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
           >
             {loading ? "Processing ... " : "Login"}
