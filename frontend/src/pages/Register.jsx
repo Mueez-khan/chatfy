@@ -110,7 +110,7 @@ export default function Register() {
           {loading ? "Loading ..." : "Register"}
         </button>
          <div>
-        <button onClick={navigateToLogin} className="text-blue-950 mt-4 ">Login</button>
+        <button onClick={navigateToLogin} className="text-white mt-4 ">Login</button>
         </div>
       </form>
     </div>
