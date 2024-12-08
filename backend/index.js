@@ -14,8 +14,7 @@ dotenv.config();
 
 app.use(
     cors({
-      origin: ["http://localhost:5173" , "http://192.168.19.63:5173" , 'https://chatfy-rven.vercel.app' ,
-              'https://chatfy-rven-git-master-mueez-khans-projects.vercel.app],
+      origin: [ 'https://chatfy-rven.vercel.app'],
       methods: "GET, POST, PATCH, DELETE, PUT",
       credentials: true,
     })
