@@ -12,10 +12,16 @@ export default function SendMessage() {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState({ content: "" });
   const [socket, setSocket] = useState(null);
-  // const [userOn , setUserOn] = useState(false);
+   const [receiverData, setReceiverData] = useState({
+    data: [],
+  });
 
   const messagesEndRef = useRef(null); // Ref for the message container
 
+  const backToHome = () =>{
+    navigate("/")
+  }
+  
   useEffect(() => {
     if (!ownId || !ownId._id) return;
 
@@ -72,9 +78,27 @@ export default function SendMessage() {
     }
   };
 
+  const ReceiverData = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_URL}/user/data/${receiverId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setReceiverData(response.data.data || []);
+    } catch (error) {
+      console.error("Error fetching messages", error.response?.data?.success);
+    }
+  };
+
   useEffect(() => {
     if (ownId?._id && receiverId) {
       fetchMessages();
+       ReceiverData();
     }
   }, [receiverId, ownId?._id]);
 
@@ -116,7 +140,21 @@ export default function SendMessage() {
   };
 
   return (
+    <>
     <div className="flex flex-col w-full h-screen sm:w-[80%] md:w-[60%] lg:w-[50%] mx-auto mt-10">
+      
+      <div className=" top-0 sticky">
+    <div className="flex  bg-green-400 shadow-md z-10 rounded ">
+    <button className="text-white text-bold" onClick={backToHome}><TbLogout2 /></button>
+        <img
+          className="w-8 rounded-full gap-1 ml-10"
+          src={receiverData.userImage}
+        ></img>
+        <div className="mr-2 ml-2 font-bold text-white">{receiverData.firstName} {receiverData.lastName}</div>
+    
+
+      </div>
+        
       <div className="flex flex-grow bg-gray-100 rounded-lg shadow-md">
         <div className="w-full flex flex-col">
           {/* Messages List */}
@@ -131,12 +169,25 @@ export default function SendMessage() {
                 <div
                   className={`max-w-[70%] px-4 py-2 rounded-lg ${
                     item.senderId === ownId._id
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-200 text-gray-800"
+                      ? "bg-green-500 text-white"
+                      : "bg-gray-800 text-white"
                   }`}
                 >
-                  {item.content}
-                  {item.firstName}
+<div className="">
+                    {item.senderId === receiverId ? (
+                      <div className="text-left">
+                      <p className="text-gray-400 text-[12px]">
+                         <span>From</span> {receiverData.firstName}
+                        </p>
+                        <p className="text-white ">
+                          {item.content}
+                        </p>
+                       
+                      </div>
+                    ) : (
+                      <p className="text-white">{item.content}</p>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -167,5 +218,6 @@ export default function SendMessage() {
         </div>
       </div>
     </div>
+      </>
   );
 }
