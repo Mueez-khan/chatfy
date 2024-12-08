@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector  } from "react-redux";
 import axios from "axios";
+import { TbLogout2 } from "react-icons/tb";
 import { io } from "socket.io-client";
 
 export default function SendMessage() {
@@ -77,6 +78,8 @@ export default function SendMessage() {
       console.error("Error fetching messages", error.response?.data?.success);
     }
   };
+
+  console.log("Receiver data :" , receiverData );
 
   const ReceiverData = async () => {
     try {
