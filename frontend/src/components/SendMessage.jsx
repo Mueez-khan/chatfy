@@ -156,6 +156,7 @@ export default function SendMessage() {
         }
       );
 
+     setMessageSend(true);
       
       const messageData = {
         ...response.data.newMessage,
@@ -163,7 +164,6 @@ export default function SendMessage() {
         receiverId,
       };
       socket?.emit("newMessage", messageData);
-     setMessageSend(true);
       setUserInput({ content: "" });
     } catch (error) {
       console.error("Error sending message", error);
