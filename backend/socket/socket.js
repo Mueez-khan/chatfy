@@ -9,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
 cors: {
-    origin: 'https://chatfy-rven-eh1666c0e-mueez-khans-projects.vercel.app',
+    origin: ['https://chatfy-rven-eh1666c0e-mueez-khans-projects.vercel.app' , 'https://chatfy-rven.vercel.app'],
     withCredentials: true,
   },
 });
