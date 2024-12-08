@@ -169,28 +169,24 @@ export default function SendMessage() {
     }
   };
 
-return (
-  <>
-    <div className="flex flex-col w-full h-screen sm:w-[80%] md:w-[60%] lg:w-[50%] mx-auto mt-10">
-      
-      {/* Sticky Header */}
-      <div className="sticky top-0 z-10 bg-green-400 shadow-md rounded">
-        <div className="flex items-center">
-          <button className="text-white font-bold p-2" onClick={backToHome}>
-            <TbLogout2 />
-          </button>
-          <img
-            className="w-8 rounded-full gap-1 ml-10"
-            src={receiverData.userImage}
-            alt="Receiver"
-          />
-          <div className="mr-2 ml-2 font-bold text-white">
-            {receiverData.firstName} {receiverData.lastName}
-          </div>
-        </div>
+ return (
+    <>
+     
+    <div className="flex  flex-col w-full h-screen overflow-y-auto sm:w-[80%] md:w-[60%] lg:w-[50%] mx-auto ">
+    
+    <div className=" top-0 sticky">
+    <div className="flex  bg-green-400 shadow-md z-10 rounded ">
+    <button className="text-white text-bold" onClick={backToHome}><TbLogout2 /></button>
+        <img
+          className="w-8 rounded-full gap-1 ml-10"
+          src={receiverData.userImage}
+        ></img>
+        <div className="mr-2 ml-2 font-bold text-white">{receiverData.firstName} {receiverData.lastName}</div>
+    
+
       </div>
-      
-      {/* Messages and Input */}
+    </div>
+
       <div className="flex flex-grow bg-gray-100 rounded-lg shadow-md">
         <div className="w-full flex flex-col">
           {/* Messages List */}
@@ -209,18 +205,25 @@ return (
                       : "bg-gray-800 text-white"
                   }`}
                 >
-                  {item.senderId === receiverId ? (
-                    <div className="text-left">
+                  {/* {item.senderId === receiverId ? `${item.content }
+                   ${receiverData.firstName}` : item.content} */}
+                  <div className="">
+                    {item.senderId === receiverId ? (
+                      <div className="text-left">
                       <p className="text-gray-400 text-[12px]">
-                        <span>From</span> {receiverData.firstName}
-                      </p>
-                      <p className="text-white">
-                        {item.content}
-                      </p>
-                    </div>
-                  ) : (
-                    <p className="text-white">{item.content}</p>
-                  )}
+                         <span>From</span> {receiverData.firstName}
+                        </p>
+                        <p className="text-white ">
+                          {item.content}
+                        </p>
+                       
+                      </div>
+                    ) : (
+                      <p className="text-white">{item.content}</p>
+                    )}
+                  </div>
+
+                  {/* {item.firstName} */}
                 </div>
               </div>
             ))}
@@ -251,6 +254,6 @@ return (
         </div>
       </div>
     </div>
-  </>
-);
-
+    </>
+  );
+}
