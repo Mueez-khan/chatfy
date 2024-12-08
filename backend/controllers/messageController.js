@@ -2,6 +2,12 @@ const Chat = require("../models/chatSchema");
 const message = require("../models/messageSchema");
 const { getReceiverSocketId , io  } = require("../socket/socket");
 
+// **********************************************************************
+// **********************************************************************
+//                          Send Message                              *
+// **********************************************************************
+// **********************************************************************
+
 exports.messageController = async (req , res) =>{
 
     try{
@@ -10,9 +16,6 @@ exports.messageController = async (req , res) =>{
         const senderId = req.user.id;
         const { content } = req.body;
 
-        // console.log("receiverId"  , receiverId);
-        // console.log("SenderID"  , senderId);
-        // console.log("Content"  , content);
 
         let conversion = await Chat.findOne({
             participants: { $all: [senderId , receiverId] },
@@ -60,6 +63,12 @@ exports.messageController = async (req , res) =>{
 
 }
 
+
+// **********************************************************************
+// **********************************************************************
+//                          Get All Messages                             *
+// **********************************************************************
+// **********************************************************************
 
 
 exports.getAllMessages = async (req , res) =>{
