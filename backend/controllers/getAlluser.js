@@ -46,7 +46,7 @@ exports.findUserById = async (req , res ) =>{
         // select -password means this will exclude the password field 
 
         console.log(userId)
-        const usersData = await User.findById(userId).select('-password');;
+        const userData = await User.findById(userId).select('-password');;
 
         if(!userData){
             return res.status(404).json({
