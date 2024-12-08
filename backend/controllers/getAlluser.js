@@ -58,7 +58,7 @@ exports.findUserById = async (req , res ) =>{
         return res.status(200).json({
             success : true,
             message : "Got user data",
-            data :  usersData
+            data :  userData
         })
 
     }
