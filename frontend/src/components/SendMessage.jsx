@@ -13,6 +13,7 @@ export default function SendMessage() {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState({ content: "" });
   const [socket, setSocket] = useState(null);
+  const [messageSend , setMessageSend] = useState(false);
    const [receiverData, setReceiverData] = useState({
     data: [],
   });
@@ -143,6 +144,7 @@ export default function SendMessage() {
   const sendMessage = async (e) => {
     e.preventDefault();
     try {
+       setMessageSend(true);
       const response = await axios.post(
         `${import.meta.env.VITE_URL}/message/${receiverId}`,
         { content: userInput.content },
@@ -160,8 +162,8 @@ export default function SendMessage() {
         senderId: ownId._id,
         receiverId,
       };
-
       socket?.emit("newMessage", messageData);
+     setMessageSend(true);
       setUserInput({ content: "" });
     } catch (error) {
       console.error("Error sending message", error);
@@ -247,7 +249,7 @@ export default function SendMessage() {
               type="submit"
               className="ml-3 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
             >
-              Send
+             {messageSend === false ? "Send" : "Sending..."}
             </button>
           </form>
         </div>
