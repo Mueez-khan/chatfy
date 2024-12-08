@@ -48,7 +48,12 @@ exports.findUserById = async (req , res ) =>{
         console.log(userId)
         const usersData = await User.findById(userId).select('-password');;
 
-
+        if(!userData){
+            return res.status(404).json({
+                success : false,
+                message : "User did not Exists  "
+            })
+        }
 
         return res.status(200).json({
             success : true,
