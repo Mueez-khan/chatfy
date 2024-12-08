@@ -14,7 +14,7 @@ dotenv.config();
 
 app.use(
     cors({
-      origin: ['https://chatfy-topaz.vercel.app'],
+      origin: 'https://chatfy-topaz.vercel.app',
       methods: "GET, POST, PATCH, DELETE, PUT",
       credentials: true,
     })
