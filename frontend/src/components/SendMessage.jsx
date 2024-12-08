@@ -81,7 +81,7 @@ export default function SendMessage() {
 
   console.log("Receiver data :" , receiverData );
 
-  const ReceiverData = async () => {
+  const userReceiverData = async () => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_URL}/user/data/${receiverId}`,
@@ -101,7 +101,7 @@ export default function SendMessage() {
   useEffect(() => {
     if (ownId?._id && receiverId) {
       fetchMessages();
-       ReceiverData();
+       userReceiverData();
     }
   }, [receiverId, ownId?._id]);
 
