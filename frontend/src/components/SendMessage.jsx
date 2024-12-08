@@ -156,7 +156,7 @@ export default function SendMessage() {
         }
       );
 
-     setMessageSend(true);
+     setMessageSend(false);
       
       const messageData = {
         ...response.data.newMessage,
