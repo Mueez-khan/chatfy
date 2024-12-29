@@ -52,7 +52,7 @@ exports.register = async (req, res) => {
 
       console.log("User registered successfully" , userDetails);
 
-      res.status(201).json({
+     return res.status(201).json({
         success : true,
         message: "User registered successfully"
          });
