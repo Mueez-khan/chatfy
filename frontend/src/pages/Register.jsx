@@ -35,6 +35,13 @@ export default function Register() {
       }
       toast.success("Registration successful! Welcome!");
       navigate("/login")
+       setUserData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      password: "",
+    });
 
     } catch (err) {
       toast.error(`Registration failed: ${err.response?.data?.message || err.message}`);
@@ -42,13 +49,7 @@ export default function Register() {
       console.error("Error during registration:", err.response?.data || err.message);
     }
     
-    setUserData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      password: "",
-    });
+   
   };
 
   return (
