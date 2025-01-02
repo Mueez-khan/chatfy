@@ -38,10 +38,10 @@ export default function Register() {
 
     } catch (err) {
       toast.error(`Registration failed: ${err.response?.data?.message || err.message}`);
-
+      setLoading(false);
       console.error("Error during registration:", err.response?.data || err.message);
     }
-
+    
     setUserData({
       firstName: "",
       lastName: "",
